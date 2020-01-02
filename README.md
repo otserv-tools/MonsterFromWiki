@@ -1,4 +1,4 @@
-# Utilities for Open Tibia written in NodeJS
+# MonsterFromWiki
 
 ## Generate loot based on wiki data
 
