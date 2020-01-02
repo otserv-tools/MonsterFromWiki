@@ -44,7 +44,6 @@ if (config.help) {
   const usage = commandLineUsage(sections);
   console.log(usage);
 } else {
-  console.log('hmm', config.useRevScriptSys);
   config = {
     creatureFolder: config.creaturefolder || creatureFolder,
     useRevScriptSys: config.userevscriptsys || false

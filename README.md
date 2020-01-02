@@ -15,7 +15,7 @@ Data is taken from [TibiaWikiApi](https://github.com/benjaminkomen/TibiaWikiApi)
 4. Execute
 
 ```
-ts-node main.ts
+ts-node src/main.ts
 ```
 
 3. The script will insert `<loot>...</loot>` into each `XML` file, **unless**:
