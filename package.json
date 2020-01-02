@@ -1,0 +1,64 @@
+{
+  "name": "simple-typescript-quickstart",
+  "version": "1.0.1",
+  "description": "Simple base for TypeScript projects, with basic tooling configured.",
+  "private": true,
+  "main": "public/index.js",
+  "scripts": {
+    "precompile": "rimraf public",
+    "start": "tsc-watch --outDir ./public --onSuccess 'node public/index.js'",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "lint": "tslint --format stylish 'src/**/*.ts'",
+    "format": "prettier --single-quote --print-width 120 --trailing-comma none --parser typescript --write 'src/**/*.ts'",
+    "precommit": "lint-staged"
+  },
+  "keywords": [
+    "typescript",
+    "tslint",
+    "jest"
+  ],
+  "author": "blurbyte",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "none",
+    "printWidth": 120,
+    "parser": "typescript"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "prettier --single-quote --print-width 120 --trailing-comma none --parser typescript --write",
+      "git add"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "8.0.53",
+    "@types/glob": "7.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.14.0",
+    "@typescript-eslint/parser": "^2.14.0",
+    "eslint": "^6.8.0",
+    "husky": "0.14.3",
+    "jest": "21.2.1",
+    "lint-staged": "4.3.0",
+    "prettier": "1.19.1",
+    "ts-node": "^8.5.4",
+    "tsc-watch": "1.0.8",
+    "tslint": "5.8.0",
+    "tslint-config-prettier": "1.6.0",
+    "tslint-plugin-prettier": "1.3.0",
+    "typescript": "^3.7.4"
+  },
+  "dependencies": {
+    "command-line-args": "5.1.1",
+    "command-line-usage": "6.1.0",
+    "glob": "7.1.6",
+    "node-fetch": "^2.6.0"
+  }
+}
