@@ -1,9 +1,9 @@
-import { LootItem, JsonLootData, JsonLoot } from '../types';
+import { LootItem, JsonLootData, ItemCountData, JsonCreatureData } from '../types';
 
-export function compileLoot(lootData: JsonLootData, useRevScriptSys: boolean = false) {
+export function compileLoot(creatureData: JsonCreatureData, lootData: JsonLootData, useRevScriptSys: boolean = false) {
   const { kills, loot } = lootData;
 
-  const itemCountDict = createItemCountDict(loot);
+  const itemCountDict = createItemCountDict(creatureData.loot);
   const lootItems: LootItem[] = [];
 
   loot
@@ -47,9 +47,14 @@ function compileLootXml(loot: LootItem[]): string {
   return xml;
 }
 
-function createItemCountDict(loot: JsonLoot[]) {
-  return loot.reduce((lookupTable, item) => ({
-    ...lookupTable,
-    [item.itemName]: parseInt(item.amount?.split('-')[1], 10) || 1
-  }));
+function createItemCountDict(loot: ItemCountData[]) {
+  return loot.reduce((lookupTable, item) => {
+    // The API sometimes uses " (Item)" after the name of an item, we remove that here.
+    const itemName = item.itemName.replace(' (Item)', '');
+
+    return {
+      ...lookupTable,
+      [itemName]: parseInt(item.amount?.split('-')[1], 10) || 1
+    };
+  }, {});
 }

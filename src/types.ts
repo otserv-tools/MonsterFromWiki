@@ -17,8 +17,17 @@ export interface JsonLootData {
   loot: JsonLoot[];
 }
 
+export interface ItemCountData {
+  amount: string;
+  itemName: string;
+}
+
+export interface JsonCreatureData {
+  loot: ItemCountData[];
+}
+
 export interface MonsterData {
-  loot: [LootItem];
+  loot: ItemCountData[];
 }
 
 export interface Config {

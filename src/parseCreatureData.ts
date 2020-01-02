@@ -5,8 +5,6 @@ import { parse as parsePath } from 'path';
 import { compileLoot } from './sections/lootSection';
 
 export const parseCreatureData = (config: Config, file: string) => async (_, data: string) => {
-  console.log(`Parsing ${file}...`);
-
   const insertIndex = data.indexOf('</monster>');
   const creatureName = parsePath(file).name;
 
@@ -18,7 +16,7 @@ export const parseCreatureData = (config: Config, file: string) => async (_, dat
 
   const { creatureData, lootData } = await getCreatureData(creatureName);
 
-  const compiledLoot = compileLoot(lootData, config.useRevScriptSys);
+  const compiledLoot = compileLoot(creatureData, lootData, config.useRevScriptSys);
 
   if (compiledLoot === '') {
     console.log(`[SKIPPING] The database does not have loot information for ${creatureName} (in ${file}).`);
@@ -27,7 +25,7 @@ export const parseCreatureData = (config: Config, file: string) => async (_, dat
 
   const code = splice(data, insertIndex, 0, compiledLoot);
 
-  writeFile(file, code, () => {});
+  writeFile(file, code, () => console.log(`Finished Parsing '${file}'.`));
 };
 
 function splice(s: string, idx: number, rem: number, str: string) {
