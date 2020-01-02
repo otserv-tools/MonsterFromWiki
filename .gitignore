@@ -1,0 +1,18 @@
+# Dependencies
+/node_modules
+
+# Testing
+/coverage
+
+# Production
+/dist
+/public
+
+# Misc
+.DS_Store
+.idea
+*.iml
+
+# Logs
+logs
+*.log*
