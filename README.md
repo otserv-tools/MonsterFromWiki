@@ -18,8 +18,8 @@ node main.js
    - The creature already has `<loot>` tags.
    - The API does not contain loot information for the creature.
 
-## Examples of file naming
-### Valid names:
+### Examples of file naming
+#### Valid names:
 
 ```lua
 Demon.xml
@@ -28,7 +28,7 @@ Cave Rat.xml
 cave rat.xml
 ```
 
-### Invalid names:
+#### Invalid names:
 
 ```lua
 cave_rat.xml
