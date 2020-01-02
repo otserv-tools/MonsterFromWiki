@@ -1,14 +1,35 @@
-# Simple TypeScript Development Environment
+# Utilities for Open Tibia written in NodeJS
 
-Development environment setup with essential tools to prototype / test __TypeScript__ concepts.
+## Generate loot based on wiki data
 
-### Getting started
+Data is taken from [TibiaWikiApi](https://github.com/benjaminkomen/TibiaWikiApi) by [benjaminkomen](https://github.com/benjaminkomen).
 
-__node.js > 8__ is required to run this project.
+### Running instructions
 
-* To start app development just run `npm start -s` command 
-* To run __jest__ tests execute `npm test` script (or `npm test:watch`)
-* To lint project with __tslint__ run `npm run lint`
-* To format code with __prettier__ run `npm run format`. Also take note, that files got formatted before each commit thanks to __lint-staged__.
-# MonsterFromWiki
-# MonsterFromWiki
+1. Add creature `XML` files in `./creatures`. The name of the file must be the name of the creature. Capitalization does not matter, but words must be separated by spaces. Only `XML` files are supported.
+
+Valid names:
+
+```lua
+Demon.xml
+DEMON.xml
+Cave Rat.xml
+cave rat.xml
+```
+
+Invalid names:
+
+```lua
+cave_rat.xml
+cave-rat.xml
+```
+
+2. Execute
+
+```
+node main.js
+```
+
+3. The script will insert `<loot>...</loot>` into each `XML` file, **unless**:
+   - The creature already has `<loot>` tags.
+   - The API does not contain loot information for the creature.
